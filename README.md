@@ -26,6 +26,16 @@ npx serve .
 - **Correo del formulario**: en `main.js`, cambiá `CONTACT_EMAIL`. Hoy el botón abre el correo del visitante (mailto). Si querés guardar los correos sin depender de eso, conectá un servicio de formularios (Formspree, Netlify Forms o una Cloud Function de Firebase, que ya usa la app).
 - **Textos**: el hero usa el ejemplo "Tareas de Sofi"; ajustá tareas y premio en `main.js` (`TASKS`, `GOAL`).
 
+## Capturas de la app
+
+Están en `assets/capturas/` (formato .webp, 540×1120). Para reemplazar una, guardá la nueva con el **mismo nombre** y listo:
+
+- `ajustes-hogar.webp`, `palabras.webp`, `juegos.webp`, `personalizar.webp` → sección "Así se ve la app"
+- `reglas-de-juego.webp` → sección de juegos
+- `avatar.webp` → sección Plus
+
+Recortá la barra de estado del teléfono (hora, batería) antes de guardarlas. No subas capturas con nombres reales: el historial de Git las conserva aunque después las reemplaces.
+
 ## Publicar con GitHub Pages
 
 1. Subí los archivos al repo `javimathesan/family_app_web` (rama `main`).
