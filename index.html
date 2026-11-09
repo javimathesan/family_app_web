@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family App · Tareas, puntos y premios en familia</title>
+  <meta name="description" content="Family App ayuda a los chicos a hacerse cargo de sus tareas: rutinas, puntos y premios que se ganan en familia, y familias amigas para que sepas con quién juegan.">
+  <meta property="og:title" content="Family App">
+  <meta property="og:description" content="Rutinas, puntos y premios para que los chicos se hagan cargo de sus tareas.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#2343A8">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Gochi+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+
+  <header class="top">
+    <a class="brand" href="#" aria-label="Family App, inicio">
+      <img src="assets/favicon.svg" alt="" width="32" height="32">
+      <span>Family App</span>
+    </a>
+    <nav aria-label="Secciones">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#familias">Familias amigas</a>
+      <a href="#plus">Plus</a>
+      <a class="nav-cta" href="#avisame">Avisame</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Las tareas de casa, con puntos que valen la pena.</h1>
+        <p class="lead">Family App convierte las rutinas de los chicos en una planilla que ellos mismos completan. Cada tarea hecha suma puntos, y los puntos se canjean por premios que eligen ustedes en familia.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#avisame">Avisame cuando salga</a>
+          <a class="link" href="#como-funciona">Ver cómo funciona</a>
+        </div>
+        <p class="hand note-try">probá: tocá un casillero de la planilla</p>
+      </div>
+
+      <figure class="chart" aria-labelledby="chart-title">
+        <div class="magnet" aria-hidden="true"></div>
+        <div class="chart-head">
+          <h2 id="chart-title" class="hand">Tareas de Sofi</h2>
+          <span class="hand chart-week">semana del lunes</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Tarea</span></th>
+              <th scope="col">L</th><th scope="col">M</th><th scope="col">M</th><th scope="col">J</th><th scope="col">V</th>
+            </tr>
+          </thead>
+          <tbody id="chart-body">
+            <!-- se completa en main.js -->
+          </tbody>
+        </table>
+        <div class="goal">
+          <div class="goal-text">
+            <span class="hand">Premio:</span>
+            <strong>elegir la peli del viernes</strong>
+          </div>
+          <div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" aria-label="Puntos para el premio">
+            <span class="goal-fill"></span>
+          </div>
+          <output class="goal-count" id="goal-count" aria-live="polite">0 de 10 puntos</output>
+        </div>
+      </figure>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="section" id="como-funciona">
+      <h2>Cómo funciona</h2>
+      <ol class="steps">
+        <li>
+          <h3>Armás las rutinas</h3>
+          <p>Elegís las tareas de cada chico: hacer la cama, poner la mesa, lavarse los dientes, la tarea del cole. Cada una con sus puntos.</p>
+        </li>
+        <li>
+          <h3>Ellos las marcan</h3>
+          <p>Desde su teléfono o tablet, los chicos marcan lo que hicieron. Vos lo confirmás y los puntos se suman.</p>
+        </li>
+        <li>
+          <h3>Canjean premios</h3>
+          <p>Los puntos se cambian por premios que definen en familia: un rato más de pantalla, elegir la cena, una salida.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FAMILIAS AMIGAS -->
+    <section class="section split" id="familias">
+      <div>
+        <h2>Sabés con quién juegan</h2>
+        <p>En Family App los chicos solo juegan con familias amigas que ustedes, los adultos, aprobaron. Nada de desconocidos: cada amistad pasa primero por los padres.</p>
+        <ul class="ticks">
+          <li>Las familias se conectan con un código que se comparten entre adultos.</li>
+          <li>Vos ves en todo momento con qué familias está conectado cada hijo.</li>
+          <li>Podés quitar una conexión cuando quieras.</li>
+        </ul>
+      </div>
+      <div class="friends" aria-hidden="true">
+        <div class="friend"><span class="dot dot-a"></span>Familia Gómez<small class="hand">aprobada por papá</small></div>
+        <div class="friend"><span class="dot dot-b"></span>Familia Ruiz<small class="hand">aprobada por mamá</small></div>
+        <div class="friend pending"><span class="dot dot-c"></span>Familia Paz<small class="hand">esperando tu ok</small></div>
+      </div>
+    </section>
+
+    <!-- JUEGOS -->
+    <section class="section" id="juegos">
+      <h2>Juegos que se ganan</h2>
+      <p class="narrow">Los juegos están, pero como premio. Se desbloquean con puntos y están pensados para aprender algo o para jugar con las familias amigas, no para pasar horas frente a la pantalla.</p>
+    </section>
+
+    <!-- PLUS -->
+    <section class="section plus" id="plus">
+      <div class="plus-card">
+        <span class="sticker" aria-hidden="true">Plus</span>
+        <h2>Family App Plus</h2>
+        <p>La app es gratis para usar en familia. Más adelante va a existir Family App Plus, con contenido extra:</p>
+        <ul class="ticks">
+          <li>Idiomas en nivel avanzado.</li>
+          <li>Más avatares y opciones para personalizar.</li>
+        </ul>
+        <p class="muted">Todavía no tiene precio ni se cobra. Te avisamos antes de que esté disponible.</p>
+      </div>
+    </section>
+
+    <!-- LO QUE VIENE -->
+    <section class="section" id="lo-que-viene">
+      <h2>Lo que viene</h2>
+      <ol class="road">
+        <li>
+          <h3>Antes del lanzamiento</h3>
+          <p>Notificaciones reales en el teléfono, un inicio más simple para los adultos y puntos validados para que nadie haga trampa.</p>
+        </li>
+        <li>
+          <h3>Los primeros meses</h3>
+          <p>Chicos con dos hogares, metas que la familia cumple en equipo, alcancía, panel de amistades para padres y widget en la pantalla de inicio.</p>
+        </li>
+        <li>
+          <h3>Después</h3>
+          <p>Versión para iPhone, la app en portugués e inglés, Family App Plus y un panel web para padres.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- AVISAME -->
+    <section class="section signup" id="avisame">
+      <h2>¿Te avisamos cuando salga?</h2>
+      <p>Primero llega a Android. Dejanos tu correo y te escribimos el día del lanzamiento. No mandamos nada más.</p>
+      <form id="signup-form" class="signup-form" novalidate>
+        <label for="email">Tu correo</label>
+        <div class="field">
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
+          <button class="btn" type="submit">Avisame</button>
+        </div>
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><strong>Family App</strong>: tareas, puntos y premios en familia.</p>
+    <p class="muted">Hecho en Argentina · © <span id="year">2026</span></p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
