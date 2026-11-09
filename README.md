@@ -36,6 +36,12 @@ Están en `assets/capturas/` (formato .webp, 540×1120). Para reemplazar una, gu
 
 Recortá la barra de estado del teléfono (hora, batería) antes de guardarlas. No subas capturas con nombres reales: el historial de Git las conserva aunque después las reemplaces.
 
+## Imagen para compartir
+
+`assets/og-image.jpg` (1200×630) es la vista previa que muestran WhatsApp, Facebook y X. Las etiquetas `og:` en `index.html` la apuntan con la URL completa; si la web pasa a un dominio propio, actualizá `og:url` y `og:image`.
+
+WhatsApp guarda la vista previa en caché: si un link ya se compartió sin imagen, probá con `?v=2` al final para forzar una nueva.
+
 ## Publicar con GitHub Pages
 
 1. Subí los archivos al repo `javimathesan/family_app_web` (rama `main`).
