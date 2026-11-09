@@ -1,8 +1,9 @@
 // Family App — sitio del producto
 
-// ⚠️ Cambiá esto por el correo donde querés recibir los pedidos de aviso,
-// o reemplazá el envío por un servicio de formularios (ver README).
-const CONTACT_EMAIL = "hola@familyapp.example";
+// ⚠️ CONFIGURACIÓN DEL FORMULARIO (ver README, sección "Formulario Avisame")
+// Pegá acá el código de tu formulario de Formspree: lo que va después de /f/
+// en la dirección que te da Formspree. Ejemplo: "xyzabcde".
+const FORMSPREE_ID = "xljjyvql";
 
 // ---------- Planilla interactiva del hero ----------
 const TASKS = ["Hacer la cama", "Poner la mesa", "Lavarse los dientes"];
@@ -65,22 +66,49 @@ const form = document.getElementById("signup-form");
 const email = document.getElementById("email");
 const msg = document.getElementById("form-msg");
 
-form?.addEventListener("submit", (e) => {
+function say(text, kind) {
+  msg.className = `form-msg ${kind}`;
+  msg.textContent = text;
+}
+
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const value = email.value.trim();
   const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   email.setAttribute("aria-invalid", valid ? "false" : "true");
   if (!valid) {
-    msg.className = "form-msg error";
-    msg.textContent = "Revisá el correo: falta la @ o el dominio (por ejemplo nombre@correo.com).";
+    say("Revisá el correo: falta la @ o el dominio (por ejemplo nombre@correo.com).", "error");
     email.focus();
     return;
   }
-  const subject = encodeURIComponent("Avisame cuando salga Family App");
-  const bodyText = encodeURIComponent(`Quiero que me avisen del lanzamiento a: ${value}`);
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${bodyText}`;
-  msg.className = "form-msg ok";
-  msg.textContent = "Listo, se abrió tu correo para enviar el pedido.";
+  if (!FORMSPREE_ID) {
+    say("El formulario todavía no está conectado. Probá de nuevo en unos días.", "error");
+    return;
+  }
+
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  say("Enviando…", "");
+
+  try {
+    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(form),
+    });
+    if (res.ok) {
+      form.reset();
+      say("¡Listo! Te escribimos el día del lanzamiento.", "ok");
+    } else if (res.status === 429) {
+      say("Hubo muchos envíos seguidos. Esperá un minuto y probá de nuevo.", "error");
+    } else {
+      say("No se pudo enviar. Revisá el correo y probá de nuevo.", "error");
+    }
+  } catch {
+    say("No se pudo enviar: revisá tu conexión a internet y probá de nuevo.", "error");
+  } finally {
+    button.disabled = false;
+  }
 });
 
 // ---------- Año del pie ----------

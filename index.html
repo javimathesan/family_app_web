@@ -35,6 +35,7 @@
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#familias">Familias amigas</a>
       <a href="#plus">Plus</a>
+      <a href="#preguntas">Preguntas</a>
       <a class="nav-cta" href="#avisame">Avisame</a>
     </nav>
   </header>
@@ -131,8 +132,8 @@
         <h2>Sabés con quién juegan</h2>
         <p>En Family App los chicos solo juegan con familias amigas que ustedes, los adultos, aprobaron. Nada de desconocidos: cada amistad pasa primero por los padres.</p>
         <ul class="ticks">
-          <li>Las familias se conectan con un código que se comparten entre adultos.</li>
-          <li>Vos ves en todo momento con qué familias está conectado cada hijo.</li>
+          <li>Cada amistad necesita la aprobación de un adulto de cada familia.</li>
+          <li>Entre familias solo se ve el apodo y el avatar. No hay chat libre.</li>
           <li>Podés quitar una conexión cuando quieras.</li>
         </ul>
       </div>
@@ -196,17 +197,63 @@
       </ol>
     </section>
 
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="section" id="preguntas">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq">
+        <details>
+          <summary>¿Para qué edades es?</summary>
+          <p>Para chicos que ya pueden seguir una rutina, hasta la adolescencia. La app tiene perfiles para los más chicos (Junior) y para adolescentes (Teen), y cada adulto ajusta las tareas y los premios a cada hijo.</p>
+        </details>
+        <details>
+          <summary>¿Mi hijo necesita tener celular?</summary>
+          <p>No. Los adultos pueden sumar un hijo sin celular y marcar sus tareas desde su propio teléfono. También está el modo tablet familiar: todos los chicos en una misma pantalla.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto cuesta?</summary>
+          <p>Usarla en familia es gratis. Más adelante va a existir Family App Plus con contenido extra. Cuando se pueda contratar, va a ser por Google Play, con baja en cualquier momento y 10 días para arrepentirte.</p>
+        </details>
+        <details>
+          <summary>¿Qué datos guardan de mis hijos?</summary>
+          <p>Apodos (no nombres completos), avatares, rutinas, tareas hechas, puntos, premios, hábitos y partidas. No pedimos email, teléfono, dirección, colegio, ubicación ni fotos de los chicos. Solo los teléfonos aprobados del hogar pueden ver esos datos.</p>
+        </details>
+        <details>
+          <summary>¿Mis hijos pueden hablar con desconocidos?</summary>
+          <p>No. Solo juegan con familias amigas que aprobó un adulto de cada familia. Entre familias se ve el apodo y el avatar, y no hay chat libre.</p>
+        </details>
+        <details>
+          <summary>¿Pueden usarla los dos adultos de la casa?</summary>
+          <p>Sí. Cada adulto la usa en su teléfono como administrador del hogar y todo se sincroniza entre los teléfonos de la casa.</p>
+        </details>
+        <details>
+          <summary>¿Tiene publicidad?</summary>
+          <p>No. Family App no muestra publicidad ni vende datos.</p>
+        </details>
+        <details>
+          <summary>¿Puedo borrar todo?</summary>
+          <p>Sí. Desde Ajustes podés desvincular un teléfono, quitar miembros o borrar el hogar y todos sus datos.</p>
+        </details>
+        <details>
+          <summary>¿Hay versión para iPhone?</summary>
+          <p>Todavía no. Primero sale para Android y la versión para iPhone viene después.</p>
+        </details>
+      </div>
+    </section>
+
     <!-- AVISAME -->
     <section class="section signup" id="avisame">
       <h2>¿Te avisamos cuando salga?</h2>
       <p>Primero llega a Android. Dejanos tu correo y te escribimos el día del lanzamiento. No mandamos nada más.</p>
-      <form id="signup-form" class="signup-form" novalidate>
+      <form id="signup-form" class="signup-form" action="#" method="POST" novalidate>
         <label for="email">Tu correo</label>
         <div class="field">
           <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
           <button class="btn" type="submit">Avisame</button>
         </div>
+        <!-- Campo trampa contra robots: las personas no lo ven -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
         <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-note">Usamos tu correo solo para avisarte del lanzamiento. Si querés que lo borremos, respondé ese mismo correo.</p>
       </form>
     </section>
   </main>

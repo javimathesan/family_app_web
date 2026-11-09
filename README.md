@@ -21,10 +21,20 @@ Abrí `index.html` en el navegador, o desde la carpeta:
 npx serve .
 ```
 
-## Antes de publicar
+## Formulario "Avisame" (Formspree)
 
-- **Correo del formulario**: en `main.js`, cambiá `CONTACT_EMAIL`. Hoy el botón abre el correo del visitante (mailto). Si querés guardar los correos sin depender de eso, conectá un servicio de formularios (Formspree, Netlify Forms o una Cloud Function de Firebase, que ya usa la app).
-- **Textos**: el hero usa el ejemplo "Tareas de Sofi"; ajustá tareas y premio en `main.js` (`TASKS`, `GOAL`).
+El formulario manda los correos a [Formspree](https://formspree.io), que te los reenvía por mail y los guarda en un panel.
+
+1. Creá una cuenta gratis en formspree.io.
+2. Tocá **+ New Form**, ponele de nombre "Avisame Family App" y elegí el correo donde querés recibir los avisos.
+3. Formspree te da una dirección como `https://formspree.io/f/xyzabcde`. Copiá solo el código final (`xyzabcde`).
+4. En `main.js`, pegalo en `const FORMSPREE_ID = "xyzabcde";`, guardá y hacé push.
+5. Probalo desde la web publicada con tu propio correo. El primer envío te pide confirmar el formulario por mail.
+6. Opcional, en Settings del formulario: en **Restrict to Domain** poné `javimathesan.github.io`, así nadie puede usar tu formulario desde otro sitio.
+
+Para exportar la lista cuando salga la app: panel del formulario → Submissions → Export (CSV).
+
+Mientras `FORMSPREE_ID` esté vacío, el formulario avisa que todavía no está conectado.
 
 ## Capturas de la app
 
