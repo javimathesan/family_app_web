@@ -52,6 +52,13 @@ Recortá la barra de estado del teléfono (hora, batería) antes de guardarlas. 
 
 WhatsApp y Teams guardan la vista previa en caché. Si cambiás la imagen, guardala con otro nombre (por ejemplo `og-image-v3.jpg`) y actualizá `og:image`, así la vuelven a leer. Todo lo importante va en el cuadrado del centro, porque algunas apps la recortan en cuadrado.
 
+## Páginas legales
+
+- `privacidad.html`: política de privacidad (la URL para Google Play es `https://javimathesan.github.io/family_app_web/privacidad.html`).
+- `terminos.html`: términos y condiciones.
+
+Correo de contacto: `familyapps.oficial@gmail.com`. Cuando cambien los textos en la app, actualizalos acá también y subí la versión (`Versión 2026-11`).
+
 ## Publicar con GitHub Pages
 
 1. Subí los archivos al repo `javimathesan/family_app_web` (rama `main`).
