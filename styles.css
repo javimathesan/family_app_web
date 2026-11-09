@@ -295,6 +295,9 @@ a { color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
 
 /* Avisame */
+.signup-form .check { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; font-weight: 400; cursor: pointer; max-width: 52ch; }
+.signup-form .check input { flex: none; width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--ink); cursor: pointer; }
+.form-submit { margin-top: 18px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form-note { margin-top: 4px; font-size: var(--step--1); color: var(--muted); max-width: 52ch; }
 .btn[disabled] { opacity: .6; cursor: wait; }

@@ -32,6 +32,8 @@ El formulario manda los correos a [Formspree](https://formspree.io), que te los 
 5. Probalo desde la web publicada con tu propio correo. El primer envío te pide confirmar el formulario por mail.
 6. Opcional, en Settings del formulario: en **Restrict to Domain** poné `javimathesan.github.io`, así nadie puede usar tu formulario desde otro sitio.
 
+La casilla "Quiero probarla antes" llega como `tester: si`. Esos correos son los que cargás como testers en Play Console (prueba cerrada).
+
 Para exportar la lista cuando salga la app: panel del formulario → Submissions → Export (CSV).
 
 Mientras `FORMSPREE_ID` esté vacío, el formulario avisa que todavía no está conectado.

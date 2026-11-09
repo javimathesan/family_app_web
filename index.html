@@ -253,12 +253,17 @@
     <section class="section signup" id="avisame">
       <h2>¿Te avisamos cuando salga?</h2>
       <p>Primero llega a Android. Dejanos tu correo y te escribimos el día del lanzamiento. No mandamos nada más.</p>
+      <p>¿Querés probarla antes que nadie? Estamos sumando familias para la prueba en Google Play: marcá la casilla y te mandamos la invitación.</p>
       <form id="signup-form" class="signup-form" action="#" method="POST" novalidate>
         <label for="email">Tu correo</label>
         <div class="field">
           <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
-          <button class="btn" type="submit">Avisame</button>
         </div>
+        <label class="check">
+          <input type="checkbox" name="tester" value="si" id="tester">
+          <span>Quiero probarla antes. Uso Android y este correo es mi cuenta de Google (Gmail).</span>
+        </label>
+        <button class="btn form-submit" type="submit">Avisame</button>
         <!-- Campo trampa contra robots: las personas no lo ven -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
         <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>

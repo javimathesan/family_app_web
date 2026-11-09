@@ -97,8 +97,14 @@ form?.addEventListener("submit", async (e) => {
       body: new FormData(form),
     });
     if (res.ok) {
+      const tester = document.getElementById("tester")?.checked;
       form.reset();
-      say("¡Listo! Te escribimos el día del lanzamiento.", "ok");
+      say(
+        tester
+          ? "¡Listo! Te mandamos la invitación para probarla en los próximos días."
+          : "¡Listo! Te escribimos el día del lanzamiento.",
+        "ok"
+      );
     } else if (res.status === 429) {
       say("Hubo muchos envíos seguidos. Esperá un minuto y probá de nuevo.", "error");
     } else {
