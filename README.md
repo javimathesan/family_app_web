@@ -38,9 +38,9 @@ Recortá la barra de estado del teléfono (hora, batería) antes de guardarlas. 
 
 ## Imagen para compartir
 
-`assets/og-image.jpg` (1200×630) es la vista previa que muestran WhatsApp, Facebook y X. Las etiquetas `og:` en `index.html` la apuntan con la URL completa; si la web pasa a un dominio propio, actualizá `og:url` y `og:image`.
+`assets/og-image-v2.jpg` (1200×630) es la vista previa que muestran WhatsApp, Facebook y X. Las etiquetas `og:` en `index.html` la apuntan con la URL completa; si la web pasa a un dominio propio, actualizá `og:url` y `og:image`.
 
-WhatsApp guarda la vista previa en caché: si un link ya se compartió sin imagen, probá con `?v=2` al final para forzar una nueva.
+WhatsApp y Teams guardan la vista previa en caché. Si cambiás la imagen, guardala con otro nombre (por ejemplo `og-image-v3.jpg`) y actualizá `og:image`, así la vuelven a leer. Todo lo importante va en el cuadrado del centro, porque algunas apps la recortan en cuadrado.
 
 ## Publicar con GitHub Pages
 
