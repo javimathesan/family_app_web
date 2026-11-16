@@ -1,68 +1,120 @@
 # Family App — sitio web
 
-Página del producto Family App: qué es, cómo funciona, familias amigas, Family App Plus, lo que viene y un formulario para avisar del lanzamiento.
+Sitio del producto Family App: qué es, cómo funciona, herramientas para toda la casa, familias amigas, Family App Plus, lo que viene, preguntas frecuentes, formulario "Avisame" y páginas legales.
 
-Sitio estático: HTML + CSS + JS, sin dependencias ni build.
+- **Publicado en:** https://javimathesan.github.io/family_app_web/
+- **Repo de la app:** https://github.com/javimathesan/family_app
+- **Contacto oficial:** familyapps.oficial@gmail.com · Instagram [@familyapps.oficial](https://www.instagram.com/familyapps.oficial/)
+
+Sitio estático: HTML + CSS + JS, sin dependencias ni paso de compilación. Lo que está en `main` es lo que se publica.
 
 ## Estructura
 
 ```
-index.html        Página
-styles.css        Estilos
-main.js           Planilla interactiva del hero + formulario
-assets/favicon.svg
+index.html          Página principal
+privacidad.html     Política de privacidad (URL para Google Play)
+terminos.html       Términos y condiciones
+borrar-datos.html   Cómo borrar los datos (URL de borrado para Google Play)
+404.html            Página de error
+styles.css          Estilos de todo el sitio
+main.js             Menú, planilla del inicio, formulario y año del pie
+sitemap.xml         Lista de páginas para los buscadores
+assets/
+  favicon.svg, icono-180.png, icono-512.png   Íconos
+  og-image-v2.jpg                             Imagen al compartir el link
+  capturas/                                   Capturas de la app (.webp)
 ```
 
-## Verlo en local
+## De dónde sale cada dato
 
-Abrí `index.html` en el navegador, o desde la carpeta:
+La web no inventa nada: todo lo que afirma sale de la app. Cuando cambie la app, revisá estos lugares.
 
-```powershell
-npx serve .
-```
+| En la web | Fuente en el repo de la app |
+| --- | --- |
+| Funciones ("Cómo funciona", "Para toda la casa", juegos) | `README.md`, tabla "Qué tiene hoy" |
+| "Lo que viene" | `docs/hoja-de-ruta.md` |
+| Edades (Peques 4 a 8, Junior 9 a 12, Teen 13 a 17) | `app/lib/models/models.dart`, `AgeMode` |
+| Privacidad y términos | pantallas `privacy_screen.dart` y `terms_screen.dart`, y `docs/legal/` |
+| Borrar mis datos | `docs/legal/borrar-datos.md` |
 
-## Formulario "Avisame" (Formspree)
+**Regla:** la app, `docs/legal/` y la web tienen que decir lo mismo. Si cambia un texto legal en un lugar, cambialo en los tres y actualizá la línea "Versión AAAA-MM" de la página.
 
-El formulario manda los correos a [Formspree](https://formspree.io), que te los reenvía por mail y los guarda en un panel.
+## Tareas frecuentes
 
-1. Creá una cuenta gratis en formspree.io.
-2. Tocá **+ New Form**, ponele de nombre "Avisame Family App" y elegí el correo donde querés recibir los avisos.
-3. Formspree te da una dirección como `https://formspree.io/f/xyzabcde`. Copiá solo el código final (`xyzabcde`).
-4. En `main.js`, pegalo en `const FORMSPREE_ID = "xyzabcde";`, guardá y hacé push.
-5. Probalo desde la web publicada con tu propio correo. El primer envío te pide confirmar el formulario por mail.
-6. Opcional, en Settings del formulario: en **Restrict to Domain** poné `javimathesan.github.io`, así nadie puede usar tu formulario desde otro sitio.
+### Cambiar el encabezado o el pie
 
-La casilla "Quiero probarla antes" llega como `tester: si`. Esos correos son los que cargás como testers en Play Console (prueba cerrada).
+El encabezado (`<header class="top">`) y el pie (`<footer class="foot">`) son **idénticos en las cinco páginas**. Para cambiarlos en todas a la vez, en VS Code: **Ctrl + Shift + H**, buscá el texto viejo, escribí el nuevo y tocá "Reemplazar todo". Después revisá que las cinco páginas hayan cambiado.
 
-Para exportar la lista cuando salga la app: panel del formulario → Submissions → Export (CSV).
+Los enlaces del menú usan `./#seccion` para que funcionen desde cualquier página.
 
-Mientras `FORMSPREE_ID` esté vacío, el formulario avisa que todavía no está conectado.
+### Agregar una sección a la página principal
 
-## Capturas de la app
+1. Copiá un bloque `<section class="section" id="...">` de `index.html` y cambiale el `id`.
+2. Si tiene que estar en el menú, agregá el enlace `./#id` en el encabezado de las cinco páginas.
 
-Están en `assets/capturas/` (formato .webp, 540×1120). Para reemplazar una, guardá la nueva con el **mismo nombre** y listo:
+### Agregar una página
+
+1. Copiá `terminos.html`, cambiá `<title>`, la descripción, el `canonical` y el contenido de `<main>`.
+2. Agregala a `sitemap.xml` y, si corresponde, al pie de las cinco páginas.
+
+### Cambiar una pregunta frecuente
+
+Cada pregunta es un bloque `<details>` en `index.html`, con la pregunta en `<summary>` y la respuesta en `<p>`.
+
+### Reemplazar capturas
+
+Están en `assets/capturas/` (formato .webp, 540×1120). Para reemplazar una, guardá la nueva con el **mismo nombre**:
 
 - `ajustes-hogar.webp`, `palabras.webp`, `juegos.webp`, `personalizar.webp` → sección "Así se ve la app"
 - `reglas-de-juego.webp` → sección de juegos
 - `avatar.webp` → sección Plus
 
-Recortá la barra de estado del teléfono (hora, batería) antes de guardarlas. No subas capturas con nombres reales: el historial de Git las conserva aunque después las reemplaces.
+Recortá la barra de estado del teléfono (hora, batería). **No subas capturas con nombres reales:** el historial de Git las conserva aunque después las reemplaces. Usá el hogar de demostración.
 
-## Imagen para compartir
+### Cambiar la imagen para compartir
 
-`assets/og-image-v2.jpg` (1200×630) es la vista previa que muestran WhatsApp, Facebook y X. Las etiquetas `og:` en `index.html` la apuntan con la URL completa; si la web pasa a un dominio propio, actualizá `og:url` y `og:image`.
+`assets/og-image-v2.jpg` (1200×630) es la vista previa de WhatsApp, Instagram, Facebook y X. Las apps la guardan en caché: si la cambiás, guardala con otro nombre (`og-image-v3.jpg`) y actualizá `og:image` en `index.html`. Lo importante va en el cuadrado del centro, porque algunas apps la recortan.
 
-WhatsApp y Teams guardan la vista previa en caché. Si cambiás la imagen, guardala con otro nombre (por ejemplo `og-image-v3.jpg`) y actualizá `og:image`, así la vuelven a leer. Todo lo importante va en el cuadrado del centro, porque algunas apps la recortan en cuadrado.
+## Formulario "Avisame" (Formspree)
 
-## Páginas legales
+El formulario manda los correos a [Formspree](https://formspree.io), que los reenvía por mail y los guarda en un panel. El código del formulario está en `main.js`, en `FORMSPREE_ID`.
 
-- `privacidad.html`: política de privacidad (la URL para Google Play es `https://javimathesan.github.io/family_app_web/privacidad.html`).
-- `terminos.html`: términos y condiciones.
+- La casilla "Quiero probarla antes" llega como `tester: si`. Esos correos son los que se cargan como testers en Play Console.
+- Revisá cada tanto la pestaña **Spam** de Submissions: Formspree guarda ahí los envíos dudosos y no avisa por mail.
+- Para exportar la lista: panel del formulario → Submissions → Export (CSV).
 
-Correo de contacto: `familyapps.oficial@gmail.com`. Cuando cambien los textos en la app, actualizalos acá también y subí la versión (`Versión 2026-11`).
+## Publicar
 
-## Publicar con GitHub Pages
+Cada `git push` a `main` actualiza la web en uno o dos minutos (GitHub → Settings → Pages → `main` / root).
 
-1. Subí los archivos al repo `javimathesan/family_app_web` (rama `main`).
-2. En GitHub: Settings → Pages → Source: *Deploy from a branch* → `main` / `root`.
-3. Queda en `https://javimathesan.github.io/family_app_web/`.
+```powershell
+git add -A
+git commit -m "Qué cambió"
+git push
+```
+
+Antes de subir, abrí la página en el navegador y revisala también en ancho de celular (F12 → ícono de dispositivos).
+
+## Cuando salga la app
+
+- [ ] Reemplazar el formulario "Avisame" por el botón oficial de Google Play (o dejarlos juntos).
+- [ ] Cambiar "Pronto en Android" y las frases en futuro ("cuando salga").
+- [ ] Actualizar "Lo que viene" con la hoja de ruta.
+- [ ] Reemplazar las capturas por las del hogar de demostración.
+
+## Si la web pasa a un dominio propio
+
+Hay que cambiar `https://javimathesan.github.io/family_app_web/` por la dirección nueva en:
+
+- `index.html`: `canonical`, `og:url`, `og:image` y el bloque de datos estructurados (`application/ld+json`).
+- `privacidad.html`, `terminos.html`, `borrar-datos.html`: `canonical`.
+- `sitemap.xml`: todas las direcciones.
+- `404.html`: `<base href="/family_app_web/">` pasa a `<base href="/">`.
+- La app: los enlaces a términos y privacidad, y la ficha de Google Play.
+- Formspree: "Restrict to Domain", si está activado.
+
+Con dominio propio conviene sumar un `robots.txt` en la raíz que apunte al sitemap. En `github.io/family_app_web/` no sirve, porque los buscadores solo lo leen en la raíz del dominio.
+
+## Para que Google la encuentre
+
+Registrá la web en [Google Search Console](https://search.google.com/search-console) con la cuenta oficial y enviá `sitemap.xml`. Ahí también se ve con qué búsquedas llega la gente.

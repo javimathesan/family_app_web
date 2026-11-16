@@ -17,27 +17,56 @@
   <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#2343A8">
+  <link rel="canonical" href="https://javimathesan.github.io/family_app_web/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icono-180.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Family App",
+        "url": "https://javimathesan.github.io/family_app_web/",
+        "logo": "https://javimathesan.github.io/family_app_web/assets/icono-512.png",
+        "email": "familyapps.oficial@gmail.com",
+        "sameAs": ["https://www.instagram.com/familyapps.oficial/"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Family App",
+        "url": "https://javimathesan.github.io/family_app_web/",
+        "inLanguage": "es-AR"
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Gochi+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
   <a class="skip" href="#contenido">Ir al contenido</a>
 
   <header class="top">
-    <a class="brand" href="#" aria-label="Family App, inicio">
+    <a class="brand" href="./" aria-label="Family App, inicio">
       <img src="assets/favicon.svg" alt="" width="32" height="32">
       <span>Family App</span>
     </a>
-    <nav aria-label="Secciones">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#familias">Familias amigas</a>
-      <a href="#plus">Plus</a>
-      <a href="#preguntas">Preguntas</a>
-      <a class="nav-cta" href="#avisame">Avisame</a>
+    <nav id="menu" class="menu" aria-label="Secciones">
+      <a href="./#como-funciona">Cómo funciona</a>
+      <a href="./#toda-la-casa">Para toda la casa</a>
+      <a href="./#familias">Familias amigas</a>
+      <a href="./#plus">Plus</a>
+      <a href="./#preguntas">Preguntas</a>
     </nav>
+    <a class="nav-cta" href="./#avisame">Avisame</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="sr-only">Menú</span>
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
   </header>
 
   <main id="contenido">
@@ -93,13 +122,45 @@
         </li>
         <li>
           <h3>Ellos las marcan</h3>
-          <p>Desde su teléfono o tablet, los chicos marcan lo que hicieron. Vos lo confirmás y los puntos se suman.</p>
+          <p>Desde su teléfono o la tablet de la casa, los chicos marcan lo que hicieron. Vos elegís qué tareas valen solas y cuáles aprobás. A tiempo suman todos los puntos; fuera de horario, la mitad.</p>
         </li>
         <li>
           <h3>Canjean premios</h3>
           <p>Los puntos se cambian por premios que definen en familia: un rato más de pantalla, elegir la cena, una salida.</p>
         </li>
       </ol>
+    </section>
+
+    <!-- PARA TODA LA CASA -->
+    <section class="section" id="toda-la-casa">
+      <h2>Una app para toda la casa</h2>
+      <p>Además de las rutinas, Family App junta en un solo lugar lo que la familia usa todos los días. Las herramientas del hogar son opcionales: cada adulto activa las que quiere.</p>
+      <ul class="notes">
+        <li class="note">
+          <h3>Agenda</h3>
+          <p>Turnos, exámenes y cumpleaños, con un aviso o una alarma que suena aunque la app esté cerrada.</p>
+        </li>
+        <li class="note">
+          <h3>Lista de compras</h3>
+          <p>Por secciones, con cantidades y precios. Los chicos piden lo que necesitan y un adulto lo aprueba.</p>
+        </li>
+        <li class="note">
+          <h3>Mi día</h3>
+          <p>Metas propias para los adultos. Los chicos ven que vos también te comprometés.</p>
+        </li>
+        <li class="note">
+          <h3>Mi cuarto y mascota</h3>
+          <p>Cada chico decora su cuarto y tiene una mascota que crece a medida que cumple la rutina.</p>
+        </li>
+        <li class="note">
+          <h3>Medallas y reto</h3>
+          <p>Medallas para los chicos y un reto de la semana para la familia.</p>
+        </li>
+        <li class="note">
+          <h3>Tablet familiar</h3>
+          <p>Todos los chicos en una misma pantalla, para la tablet de la casa. Se sale con PIN.</p>
+        </li>
+      </ul>
     </section>
 
     <!-- ASÍ SE VE -->
@@ -149,7 +210,7 @@
     <section class="section split" id="juegos">
       <div>
         <h2>Juegos con reglas que ponen los padres</h2>
-        <p>Tres en raya, 4 en línea, ludo, ajedrez y más, para jugar entre ustedes o con familias amigas. Vos decidís cuándo pueden jugar los chicos:</p>
+        <p>Tres en raya, 4 en línea, ludo, ajedrez, Mi Barrio y Colorín, para jugar entre ustedes o con familias amigas. Vos decidís cuándo pueden jugar los chicos:</p>
         <ul class="ticks">
           <li>Siempre, con media rutina hecha o con la rutina completa.</li>
           <li>Con un límite de tiempo por día, de 15 a 90 minutos, o sin límite.</li>
@@ -204,7 +265,7 @@
       <div class="faq">
         <details>
           <summary>¿Para qué edades es?</summary>
-          <p>Para chicos que ya pueden seguir una rutina, hasta la adolescencia. La app tiene perfiles para los más chicos (Junior) y para adolescentes (Teen), y cada adulto ajusta las tareas y los premios a cada hijo.</p>
+          <p>De 4 a 17 años. Hay tres perfiles según la edad: Peques (4 a 8), Junior (9 a 12) y Teen (13 a 17). La app sugiere una lista de tareas para cada edad, y cada adulto ajusta las tareas y los premios a cada hijo.</p>
         </details>
         <details>
           <summary>¿Mi hijo necesita tener celular?</summary>
@@ -240,7 +301,7 @@
         </details>
         <details>
           <summary>¿Puedo borrar todo?</summary>
-          <p>Sí. Un adulto administrador puede borrar el hogar y todos sus datos desde Ajustes. El borrado es inmediato y no se puede deshacer. También se puede pedir por correo. Los detalles están en la <a href="privacidad.html#borrar">política de privacidad</a>.</p>
+          <p>Sí. Un adulto administrador puede borrar el hogar y todos sus datos desde Ajustes. El borrado es inmediato y no se puede deshacer. También se puede pedir por correo. El paso a paso está en <a href="borrar-datos.html">Borrar mis datos</a>.</p>
         </details>
         <details>
           <summary>¿Hay versión para iPhone?</summary>
@@ -274,9 +335,12 @@
 
   <footer class="foot">
     <p><strong>Family App</strong>: tareas, puntos y premios en familia.</p>
-    <nav class="foot-links" aria-label="Legales">
+    <nav class="foot-links" aria-label="Enlaces">
       <a href="privacidad.html">Privacidad</a>
       <a href="terminos.html">Términos</a>
+      <a href="borrar-datos.html">Borrar mis datos</a>
+      <a href="https://www.instagram.com/familyapps.oficial/" rel="noopener">Instagram</a>
+      <a href="mailto:familyapps.oficial@gmail.com">Contacto</a>
     </nav>
     <p class="muted">Hecho en Argentina · © <span id="year">2026</span></p>
   </footer>

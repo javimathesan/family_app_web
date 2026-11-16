@@ -70,11 +70,22 @@ a { color: var(--ink); }
   gap: 16px;
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.15rem; }
-.top nav { display: flex; align-items: center; gap: clamp(12px, 2.4vw, 28px); }
-.top nav a { text-decoration: none; color: var(--text); font-weight: 600; font-size: var(--step--1); }
-.top nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.top nav .nav-cta { background: var(--ink); color: #fff; padding: 8px 16px; border-radius: 999px; }
-.top nav .nav-cta:hover { color: #fff; background: #1A3488; text-decoration: none; }
+.top { position: relative; }
+.menu { display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); margin-left: auto; }
+.menu a { text-decoration: none; color: var(--text); font-weight: 600; font-size: var(--step--1); }
+.menu a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.nav-cta {
+  flex: none; text-decoration: none; font-weight: 600; font-size: var(--step--1);
+  background: var(--ink); color: #fff; padding: 8px 16px; border-radius: 999px;
+}
+.nav-cta:hover { background: #1A3488; }
+/* Botón del menú: solo aparece en pantallas chicas y si hay JavaScript */
+.menu-btn {
+  display: none; flex: none;
+  width: 42px; height: 42px; padding: 0; place-items: center;
+  background: var(--card); color: var(--text);
+  border: 2px solid var(--text); border-radius: 12px; cursor: pointer;
+}
 
 /* ---------- Botones ---------- */
 .btn {
@@ -212,6 +223,36 @@ a { color: var(--ink); }
 .dot-b { background: #8FB3FF; }
 .dot-c { background: #FFD1DC; }
 
+/* Para toda la casa: notas pegadas en la heladera */
+.notes {
+  list-style: none; padding: 0; margin: 40px 0 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2.6vw, 30px);
+}
+.note {
+  --tilt: -1.2deg;
+  position: relative;
+  padding: 30px 22px 24px;
+  background: #FFF1B8;
+  transform: rotate(var(--tilt));
+  box-shadow: 4px 6px 0 rgba(35, 67, 168, .14);
+}
+.note::before {                      /* cinta de papel */
+  content: ""; position: absolute; top: -11px; left: 50%;
+  width: 78px; height: 22px; margin-left: -39px;
+  background: rgba(255, 255, 255, .75);
+  border: 1px solid var(--grid);
+  transform: rotate(-2deg);
+}
+.note:nth-child(3n+2) { --tilt: .9deg; background: #D6E6FF; }
+.note:nth-child(3n) { --tilt: -.5deg; background: #FFD9E2; }
+.note:nth-child(n+4) { margin-top: 6px; }
+.note:nth-child(4) { background: #D5F2E1; --tilt: 1.1deg; }
+.note:nth-child(5) { background: #FFF1B8; --tilt: -.8deg; }
+.note:nth-child(6) { background: #D6E6FF; --tilt: .6deg; }
+.note h3 { font-family: var(--hand); font-weight: 400; font-size: 1.7rem; letter-spacing: 0; color: var(--ink); }
+.note p { margin-top: 8px; font-size: var(--step--1); line-height: 1.5; color: var(--text); }
+
 /* Capturas en marco de teléfono */
 .phone-fig { margin: 0; }
 .phone {
@@ -323,7 +364,7 @@ a { color: var(--ink); }
   font-size: var(--step--1);
 }
 
-.foot-links { display: flex; gap: 18px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 .foot-links a { font-weight: 600; text-underline-offset: 4px; }
 
 /* ---------- Páginas legales ---------- */
@@ -338,7 +379,8 @@ a { color: var(--ink); }
 .legal h2 { font-size: var(--step-1); }
 .legal p, .legal li { max-width: 66ch; }
 .legal p { margin-top: 10px; }
-.legal ul { margin: 10px 0 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.legal ul, .legal ol { margin: 10px 0 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.notfound-actions { margin-top: 28px; }
 .legal-legend { font-size: var(--step--1); color: var(--muted); }
 
 /* ---------- Responsive ---------- */
@@ -347,13 +389,35 @@ a { color: var(--ink); }
   .hero h1 { max-width: 16ch; }
   .chart { transform: rotate(0.6deg); }
   .steps { grid-template-columns: 1fr; }
+  .notes { grid-template-columns: repeat(2, 1fr); }
   .note-try { margin-bottom: 8px; }
   .shots { grid-template-columns: repeat(4, 62vw); margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
   .shots .phone-fig:nth-child(even) { margin-top: 0; }
   .phone-fig.solo { max-width: 260px; }
 }
+/* Menú desplegable en pantallas chicas */
+@media (max-width: 900px) {
+  .nav-cta { margin-left: auto; }
+  .js .menu-btn { display: grid; }
+  .js .menu {
+    display: none;
+    position: absolute; z-index: 5; top: 100%; left: var(--gutter); right: var(--gutter);
+    flex-direction: column; align-items: stretch; gap: 0; margin: 0;
+    background: var(--card); border: 2px solid var(--text); border-radius: 14px;
+    box-shadow: 6px 8px 0 rgba(35, 67, 168, .14);
+    padding: 6px 0;
+  }
+  .js .menu.open { display: flex; }
+  .js .menu a { padding: 13px 18px; font-size: var(--step-0); }
+  .js .menu a + a { border-top: 1.5px solid var(--grid); }
+  /* Sin JavaScript no hay botón: los enlaces quedan a la vista, en varias líneas */
+  html:not(.js) .top { flex-wrap: wrap; }
+  html:not(.js) .menu { order: 3; width: 100%; flex-wrap: wrap; margin: 0; }
+}
 @media (max-width: 560px) {
-  .top nav a:not(.nav-cta) { display: none; }
+  .notes { grid-template-columns: 1fr; gap: 30px; }
+  .note:nth-child(n+4) { margin-top: 0; }
+  .foot { flex-direction: column; }
   .chart tbody th { font-size: 1.05rem; }
   .chart td { height: 44px; }
   .cell svg { width: 24px; height: 24px; }

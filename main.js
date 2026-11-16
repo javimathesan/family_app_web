@@ -5,6 +5,29 @@
 // en la dirección que te da Formspree. Ejemplo: "xyzabcde".
 const FORMSPREE_ID = "xljjyvql";
 
+// Este archivo se carga en todas las páginas. Cada bloque revisa que exista
+// lo que necesita, así que en las páginas legales solo corren el menú y el año.
+
+// ---------- Menú en pantallas chicas ----------
+// (La clase "js" la pone un script mínimo en el <head> de cada página.)
+const menu = document.getElementById("menu");
+const menuBtn = document.querySelector(".menu-btn");
+
+function setMenu(open) {
+  menu.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", String(open));
+}
+if (menu && menuBtn) {
+  menuBtn.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+  menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".top")) setMenu(false);
+  });
+}
+
 // ---------- Planilla interactiva del hero ----------
 const TASKS = ["Hacer la cama", "Poner la mesa", "Lavarse los dientes"];
 const DAYS = ["lunes", "martes", "miércoles", "jueves", "viernes"];
