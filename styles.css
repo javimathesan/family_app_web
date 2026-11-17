@@ -2,6 +2,21 @@
    Lenguaje visual: la planilla de tareas pegada en la heladera.
    Papel cuadriculado, birome azul, stickers. */
 
+/* Fuentes servidas desde el propio sitio (sin pedidos a terceros).
+   Licencia SIL Open Font License: ver assets/fuentes/. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("assets/fuentes/bricolage-grotesque.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gochi Hand";
+  src: url("assets/fuentes/GochiHand-Regular.ttf") format("truetype");  /* archivo original, sin modificar */
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --paper: #F7F9FC;      /* papel frío, no crema */
   --grid: #DCE4F2;       /* cuadrícula del cuaderno */
@@ -29,6 +44,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+/* El encabezado queda fijo: los destinos de los enlaces no deben quedar tapados */
+[id] { scroll-margin-top: 92px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -61,16 +78,17 @@ a { color: var(--ink); }
 
 /* ---------- Encabezado ---------- */
 .top {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 18px var(--gutter);
+  position: sticky; top: 0; z-index: 20;
+  background: var(--paper);
+  border-bottom: 1.5px solid var(--grid);
+  /* Ocupa todo el ancho, con el contenido alineado al resto de la página */
+  padding: 14px max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter)));
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 1.15rem; }
-.top { position: relative; }
 .menu { display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); margin-left: auto; }
 .menu a { text-decoration: none; color: var(--text); font-weight: 600; font-size: var(--step--1); }
 .menu a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
@@ -105,6 +123,9 @@ a { color: var(--ink); }
 .btn:hover { background: #1A3488; }
 .btn:active { transform: translateY(3px); box-shadow: 0 0 0 #15296B; }
 .link { font-weight: 600; text-underline-offset: 4px; }
+.btn-alt { background: var(--card); color: var(--text); border: 2px solid var(--text); box-shadow: 0 3px 0 var(--text); }
+.btn-alt:hover { background: #EEF3FC; }
+.btn-alt:active { box-shadow: 0 0 0 var(--text); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -253,6 +274,21 @@ a { color: var(--ink); }
 .note h3 { font-family: var(--hand); font-weight: 400; font-size: 1.7rem; letter-spacing: 0; color: var(--ink); }
 .note p { margin-top: 8px; font-size: var(--step--1); line-height: 1.5; color: var(--text); }
 
+/* Llamada intermedia */
+.band {
+  max-width: calc(var(--max) - 2 * var(--gutter));
+  margin: 0 auto;
+  width: calc(100% - 2 * var(--gutter));
+  padding: clamp(22px, 3vw, 32px) clamp(20px, 4vw, 44px);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px;
+  background: var(--card);
+  border: 2px solid var(--text);
+  border-radius: 6px;
+  box-shadow: 6px 8px 0 rgba(35, 67, 168, .14);
+}
+.band-text { font-size: var(--step-2); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.band-text .hand { color: var(--gum); font-size: 1.15em; margin-left: 6px; display: inline-block; transform: rotate(-2deg); }
+
 /* Capturas en marco de teléfono */
 .phone-fig { margin: 0; }
 .phone {
@@ -356,6 +392,11 @@ a { color: var(--ink); }
 .form-msg.error { color: #C2264F; }
 .form-msg.ok { color: var(--mint); }
 
+/* Compartir */
+.share { margin-top: clamp(40px, 6vw, 64px); padding-top: 28px; border-top: 1.5px solid var(--grid); max-width: 560px; }
+.share h3 { font-size: var(--step-1); }
+.share-actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; }
+
 /* Pie */
 .foot {
   max-width: var(--max); margin: 0 auto;
@@ -401,7 +442,7 @@ a { color: var(--ink); }
   .js .menu-btn { display: grid; }
   .js .menu {
     display: none;
-    position: absolute; z-index: 5; top: 100%; left: var(--gutter); right: var(--gutter);
+    position: absolute; z-index: 5; top: calc(100% + 8px); left: var(--gutter); right: var(--gutter);
     flex-direction: column; align-items: stretch; gap: 0; margin: 0;
     background: var(--card); border: 2px solid var(--text); border-radius: 14px;
     box-shadow: 6px 8px 0 rgba(35, 67, 168, .14);

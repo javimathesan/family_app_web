@@ -41,9 +41,7 @@
     ]
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Gochi+Hand&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fuentes/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -167,7 +165,7 @@
     <section class="section" id="asi-se-ve">
       <h2>Así se ve la app</h2>
       <p>Capturas de la versión de prueba en Android.</p>
-      <div class="shots" tabindex="0" aria-label="Capturas de la app, se pueden desplazar">
+      <div class="shots" role="region" tabindex="0" aria-label="Capturas de la app, se pueden desplazar">
         <figure class="phone-fig">
           <div class="phone"><img src="assets/capturas/ajustes-hogar.webp" alt="Ajustes del hogar: rutina y premios, reglas de juego, hábitos, reto de la semana, idiomas, familias amigas e invitar con QR" width="540" height="1120" loading="lazy"></div>
           <figcaption>Todo el hogar se configura desde un lugar.</figcaption>
@@ -186,6 +184,12 @@
         </figure>
       </div>
     </section>
+
+    <!-- LLAMADA INTERMEDIA -->
+    <aside class="band" aria-label="Avisame cuando salga">
+      <p class="band-text">Sale primero para Android. <span class="hand">¿te avisamos?</span></p>
+      <a class="btn" href="#avisame">Avisame cuando salga</a>
+    </aside>
 
     <!-- FAMILIAS AMIGAS -->
     <section class="section split" id="familias">
@@ -314,11 +318,11 @@
     <section class="section signup" id="avisame">
       <h2>¿Te avisamos cuando salga?</h2>
       <p>Primero llega a Android. Dejanos tu correo y te escribimos el día del lanzamiento. No mandamos nada más.</p>
-      <p>¿Querés probarla antes que nadie? Estamos sumando familias para la prueba en Google Play: marcá la casilla y te mandamos la invitación.</p>
-      <form id="signup-form" class="signup-form" action="#" method="POST" novalidate>
+      <p>¿Querés probarla antes que nadie? Estamos sumando familias para la prueba en Google Play. Los lugares son limitados: marcá la casilla y, si hay lugar, te mandamos la invitación por correo.</p>
+      <form id="signup-form" class="signup-form" action="https://formspree.io/f/xljjyvql" method="POST" novalidate>
         <label for="email">Tu correo</label>
         <div class="field">
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="nombre@correo.com" required>
         </div>
         <label class="check">
           <input type="checkbox" name="tester" value="si" id="tester">
@@ -330,6 +334,15 @@
         <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
         <p class="form-note">Usamos tu correo solo para avisarte del lanzamiento. Si querés que lo borremos, respondé ese mismo correo. <a href="privacidad.html#web">Más info</a>.</p>
       </form>
+
+      <div class="share">
+        <h3>¿Conocés a una familia a la que le puede servir?</h3>
+        <p class="share-actions">
+          <a class="btn btn-alt" id="share-wa" href="https://wa.me/?text=Mir%C3%A1%20Family%20App%3A%20tareas%2C%20puntos%20y%20premios%20para%20los%20chicos.%20https%3A%2F%2Fjavimathesan.github.io%2Ffamily_app_web%2F" rel="noopener">Compartir por WhatsApp</a>
+          <button class="btn btn-alt" id="share-copy" type="button" hidden>Copiar el enlace</button>
+        </p>
+        <p class="form-msg" id="share-msg" role="status" aria-live="polite"></p>
+      </div>
     </section>
   </main>
 

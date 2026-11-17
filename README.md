@@ -23,6 +23,7 @@ assets/
   favicon.svg, icono-180.png, icono-512.png   Íconos
   og-image-v2.jpg                             Imagen al compartir el link
   capturas/                                   Capturas de la app (.webp)
+  fuentes/                                    Tipografías y sus licencias (OFL)
 ```
 
 ## De dónde sale cada dato
@@ -75,9 +76,13 @@ Recortá la barra de estado del teléfono (hora, batería). **No subas capturas 
 
 `assets/og-image-v2.jpg` (1200×630) es la vista previa de WhatsApp, Instagram, Facebook y X. Las apps la guardan en caché: si la cambiás, guardala con otro nombre (`og-image-v3.jpg`) y actualizá `og:image` en `index.html`. Lo importante va en el cuadrado del centro, porque algunas apps la recortan.
 
+### Tipografías
+
+Bricolage Grotesque (textos) y Gochi Hand (letra manuscrita) se sirven desde `assets/fuentes/`, sin pedidos a Google ni a terceros. Las dos tienen licencia SIL Open Font License; los textos de la licencia están en la misma carpeta y tienen que quedar ahí.
+
 ## Formulario "Avisame" (Formspree)
 
-El formulario manda los correos a [Formspree](https://formspree.io), que los reenvía por mail y los guarda en un panel. El código del formulario está en `main.js`, en `FORMSPREE_ID`.
+El formulario manda los correos a [Formspree](https://formspree.io), que los reenvía por mail y los guarda en un panel. La dirección del formulario está en `index.html`, en el atributo `action` de `<form id="signup-form">`. Así también funciona si el navegador no tiene JavaScript.
 
 - La casilla "Quiero probarla antes" llega como `tester: si`. Esos correos son los que se cargan como testers en Play Console.
 - Revisá cada tanto la pestaña **Spam** de Submissions: Formspree guarda ahí los envíos dudosos y no avisa por mail.
@@ -107,6 +112,7 @@ Antes de subir, abrí la página en el navegador y revisala también en ancho de
 Hay que cambiar `https://javimathesan.github.io/family_app_web/` por la dirección nueva en:
 
 - `index.html`: `canonical`, `og:url`, `og:image` y el bloque de datos estructurados (`application/ld+json`).
+- `index.html` y `main.js`: la dirección que se comparte por WhatsApp y la de "Copiar el enlace".
 - `privacidad.html`, `terminos.html`, `borrar-datos.html`: `canonical`.
 - `sitemap.xml`: todas las direcciones.
 - `404.html`: `<base href="/family_app_web/">` pasa a `<base href="/">`.

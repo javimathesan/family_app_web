@@ -1,10 +1,5 @@
 // Family App — sitio del producto
 
-// ⚠️ CONFIGURACIÓN DEL FORMULARIO (ver README, sección "Formulario Avisame")
-// Pegá acá el código de tu formulario de Formspree: lo que va después de /f/
-// en la dirección que te da Formspree. Ejemplo: "xyzabcde".
-const FORMSPREE_ID = "xljjyvql";
-
 // Este archivo se carga en todas las páginas. Cada bloque revisa que exista
 // lo que necesita, así que en las páginas legales solo corren el menú y el año.
 
@@ -85,6 +80,8 @@ function update() {
 }
 
 // ---------- Formulario "Avisame" ----------
+// La dirección de Formspree está en el atributo action del formulario (index.html).
+// Así el formulario también funciona si el navegador no tiene JavaScript.
 const form = document.getElementById("signup-form");
 const email = document.getElementById("email");
 const msg = document.getElementById("form-msg");
@@ -104,17 +101,13 @@ form?.addEventListener("submit", async (e) => {
     email.focus();
     return;
   }
-  if (!FORMSPREE_ID) {
-    say("El formulario todavía no está conectado. Probá de nuevo en unos días.", "error");
-    return;
-  }
 
   const button = form.querySelector('button[type="submit"]');
   button.disabled = true;
   say("Enviando…", "");
 
   try {
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    const res = await fetch(form.action, {
       method: "POST",
       headers: { Accept: "application/json" },
       body: new FormData(form),
@@ -124,7 +117,7 @@ form?.addEventListener("submit", async (e) => {
       form.reset();
       say(
         tester
-          ? "¡Listo! Te mandamos la invitación para probarla en los próximos días."
+          ? "¡Listo! Si hay lugar en la prueba, te mandamos la invitación por correo. Si no, te avisamos el día del lanzamiento."
           : "¡Listo! Te escribimos el día del lanzamiento.",
         "ok"
       );
@@ -139,6 +132,23 @@ form?.addEventListener("submit", async (e) => {
     button.disabled = false;
   }
 });
+
+// ---------- Compartir ----------
+const copyBtn = document.getElementById("share-copy");
+const shareMsg = document.getElementById("share-msg");
+if (copyBtn && navigator.clipboard) {
+  copyBtn.hidden = false;
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("https://javimathesan.github.io/family_app_web/");
+      shareMsg.className = "form-msg ok";
+      shareMsg.textContent = "Enlace copiado.";
+    } catch {
+      shareMsg.className = "form-msg error";
+      shareMsg.textContent = "No se pudo copiar. Copiá la dirección desde la barra del navegador.";
+    }
+  });
+}
 
 // ---------- Año del pie ----------
 const year = document.getElementById("year");
