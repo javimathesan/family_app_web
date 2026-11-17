@@ -88,6 +88,10 @@ El formulario manda los correos a [Formspree](https://formspree.io), que los ree
 - Revisá cada tanto la pestaña **Spam** de Submissions: Formspree guarda ahí los envíos dudosos y no avisa por mail.
 - Para exportar la lista: panel del formulario → Submissions → Export (CSV).
 
+### Después de cambiar `styles.css` o `main.js`
+
+Los navegadores guardan estos dos archivos. Para que todos vean la versión nueva enseguida, subí el número de `?v=` en las cinco páginas: en VS Code, **Ctrl + Shift + H**, buscá `?v=4` y reemplazá por `?v=5` (y así cada vez). Si solo cambiaste texto en un `.html`, no hace falta.
+
 ## Publicar
 
 Cada `git push` a `main` actualiza la web en uno o dos minutos (GitHub → Settings → Pages → `main` / root).
